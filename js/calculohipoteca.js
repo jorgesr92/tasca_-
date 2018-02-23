@@ -1,7 +1,7 @@
 function calcul () {
-    var inicio=new Date(document.getElementById("inicio").value);
-    var capital=parseInt(document.getElementById("capital").value);
-    var interes=parseInt(document.getElementById("interes").value);
+    var inicio=new Date(document.getElementById("fechainicio").value);
+    var capital=parseInt(document.getElementById("Euros").value);
+    var interes=parseInt(document.getElementById("intereses").value);
     var meses=parseInt(document.getElementById("Meses").value);
     var fechafinal=fechafinal(inicio);
     
@@ -11,8 +11,8 @@ function calcul () {
 //Funció per tractament d'errors. Volem que l'usuari ens introdueixi una data no inferior a la data actual i que el primer dia per al càlcul de la hipoteca sigui dia 1 de cada mes.
 
 function errores () {
-    var inicio=new Date(document.getElementById("inicio").value);
-    var erroresfecha=document.getElementById("inicio").value;
+    var inicio=new Date(document.getElementById("fechainicio").value);
+    var erroresfecha=document.getElementById("fechainicio").value;
     
     if (inicio<new Date()){
         alert("la fecha de inicio no puede ser inferior a la fecha actual");
@@ -29,7 +29,7 @@ function errores () {
 
 //Funció per saber quin dia acabarem de pagar la hipoteca.
 function fechafinal() {
-    var inicio=new Date(document.getElementById("inicio").value);
+    var inicio=new Date(document.getElementById("fechainicio").value);
     var meses=parseInt(document.getElementById("Meses").value);
     var fechafinal=inicio;
     fechafinal.setFullYear(fechafinal.getFullYear()+(meses/12));
@@ -39,8 +39,8 @@ function fechafinal() {
 //Funció per calcular la quota de la hipoteca.
 function calculohipoteca () {
     // hem de convertir a integer amb un parseInt
-    var capital=parseInt(document.getElementById("capital").value);
-    var interes=parseInt(document.getElementById("interes").value);
+    var capital=parseInt(document.getElementById("Euros").value);
+    var interes=parseInt(document.getElementById("intereses").value);
     var meses=parseInt(document.getElementById("Meses").value);
     var fechafinal=fechafinal();
     
