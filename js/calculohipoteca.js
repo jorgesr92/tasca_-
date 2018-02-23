@@ -1,20 +1,57 @@
-var fecini=document.getElementById("fechaInicio").value;
-var capital=document.getElementById("Euros").value;
-var meses=document.getElementById("Meses").value;
-var interesas=document.getElementById("intereses").value;
-var resultat=100;
-function calulohipoteca() {
+function calcul () {
+    var inicio=new Date(document.getElementById("inicio").value);
+    var capital=parseInt(document.getElementById("capital").value);
+    var interes=parseInt(document.getElementById("interes").value);
+    var meses=parseInt(document.getElementById("Meses").value);
+    var fechafinal=fechafinal(inicio);
     
-    return "Pagaràs una hipoteca de "+resultat+"€ mensuals ";
-
     
-
-    document.getElementById("resultats").innerHTML="Pagaràs una hipoteca de 1000€ mensuals ";
-
-} 
-function comprovarcapital(capital) {
-    if (capital>1000000) {
-        alert("no se puede superar el millón de euros de hipoteca");
-    }
 }
 
+//Funció per tractament d'errors. Volem que l'usuari ens introdueixi una data no inferior a la data actual i que el primer dia per al càlcul de la hipoteca sigui dia 1 de cada mes.
+
+function errores () {
+    var inicio=new Date(document.getElementById("inicio").value);
+    var erroresfecha=document.getElementById("inicio").value;
+    
+    if (inicio<new Date()){
+        alert("la fecha de inicio no puede ser inferior a la fecha actual");
+        return false;
+    }
+    if (rerroresfecha.substring(8,11)!="01"){
+        alert("La data ha de ser el primer dia de cada mes.");
+        return false;
+    }
+    return true;
+    
+}
+
+
+//Funció per saber quin dia acabarem de pagar la hipoteca.
+function fechafinal() {
+    var inicio=new Date(document.getElementById("inicio").value);
+    var meses=parseInt(document.getElementById("Meses").value);
+    var fechafinal=inicio;
+    fechafinal.setFullYear(fechafinal.getFullYear()+(meses/12));
+    return fechafinal;
+}
+
+//Funció per calcular la quota de la hipoteca.
+function calculohipoteca () {
+    // hem de convertir a integer amb un parseInt
+    var capital=parseInt(document.getElementById("capital").value);
+    var interes=parseInt(document.getElementById("interes").value);
+    var meses=parseInt(document.getElementById("Meses").value);
+    var fechafinal=fechafinal();
+    
+    if (errores()) {
+        cuota=((capital*interes)/100*(1-Math.pow(1+(interes/100)), (meses/12))/12);
+        
+        //Aquest és el missatge que apareix quan l'usuari fa clic a "enviar". Es calcula la quota de la hipoteca i quan s'acabarà de pagar. Aquest resultat apareix en un "div" a la pàgina web index.
+        
+        document.getElementById("resultats").innerHTML = "La data de l'última quota de la teva hipoteca serà el dia "+fechafinal.getDate()+"/"+fechafinal.getMonth()+"/"+fechafinal.getFullYear()+ " i la quota de la teva hipoteca serà de "+cuota.toFixed(2)+ " €.";    
+    } 
+    return false;
+    
+    
+}

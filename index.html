@@ -5,9 +5,10 @@
 	<title>Práctica -</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">	
-	<script src="js/calculohipoteca.js"></script>
+	
 </head>
 <body>
+        <script src="js/calculohipoteca.js"></script>
         <script>
             addEventListener('load',inicio,false);
             function inicio()
@@ -34,23 +35,28 @@
             <div class="card-deck">
                 <div class="card">
                     <div class="card-body">
-                        <form action="#">
+                        <form action="index.html" onsubmit="return calculohipoteca ()">
                             <div id="formularioT"> <h1>Calcula tu hipoteca</h1> </div>
                             <div id="inicio"> <p>Fecha de inicio <input type="month" id="fechaInicio" min="2018-02" value="2018-02"> </p></div>
-                            <div id="capitals"> <p> Capital solicitado (Euros): <span id="euro">50000</span> <br> <input type="range" id="Euros" min="50000" max="1000000" oninput="calculohipoteca()"> </p></div>
-                            <form> <div id="capital"> <p> Meses: <span id="mes">240</span> <br><input type="range" id="Meses" min="120" max="480"> </p></div></form>
+                            <div id="capital"> <p> Capital solicitado (Euros): <span id="euro">50000</span> <br> <input type="range" id="Euros" min="50000" max="1000000"> </p></div>
+                            <form> <div id="Mes"> <p> Meses: <span id="mes">240</span> <br><input type="range" id="Meses" min="120" max="480"> </p></div></form>
                             <div id="interes"> <p>Intereses (%):  <input type="number" id="intereses" value=1.05 min="0" step=0.01></p></div>
                             <!--<div id="buscar"><p> <button> ¡Calcular cuotas! </button></p> </div>-->
+                            <div class="container">
+                            <div class="card-deck">
+                            <div><input type="submit" class="btn btn-default btn-lg active" value="Calcular"></div>
                             <div id="botón"> <!-- botón para poder riniciar el programa y volver a caluclar  -->
                                 <p> 
                                     <a href=index.html class="btn btn-default btn-lg active" role="button">Volver a empezar</a>
                                 </p>
                             </div>
+                            </div>
+                            </div>
                         </form>
                     </div>
                 </div>
                 <div class="card">
-                <h1><div id="resultats" style="text-align:center">&nbsp</div></h1>
+                <div id="resultats" style="text-align:center"></div>
                 </div>
             </div>
         </div>
