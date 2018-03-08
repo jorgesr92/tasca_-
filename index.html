@@ -1,64 +1,80 @@
 
+
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Práctica -</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">	
-	
-</head>
-<body>
+    <head>
+        <title>Práctica -</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">	
         <script src="js/calculohipoteca.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/css.css" />
+        
+    </head>
+    <body>
         <script>
             addEventListener('load',inicio,false);
             function inicio()
             {
-                document.getElementById('Meses').addEventListener('change',cambiomeses,false);
+                document.getElementById('termini').addEventListener('change',cambiomeses,false);
             }
             function cambiomeses()
             {    
-                document.getElementById('mes').innerHTML=document.getElementById('Meses').value;
+                document.getElementById('mes').innerHTML=document.getElementById('termini').value;
             }
         </script>
         <script>
-                addEventListener('load',inicio1,false);
-                function inicio1()
-                {
-                    document.getElementById('Euros').addEventListener('change',cambiocapital,false);
-                }
-                function cambiocapital()
-                {    
-                    document.getElementById('euro').innerHTML=document.getElementById('Euros').value;
-                }
-            </script>
+            addEventListener('load',inicio1,false);
+            function inicio1()
+            {
+                document.getElementById('capital').addEventListener('change',cambiocapital,false);
+            }
+            function cambiocapital()
+            {    
+                document.getElementById('euro').innerHTML=document.getElementById('capital').value;
+            }
+        </script>
         <div class="container"> <!-- Formulario -->
             <div class="card-deck">
                 <div class="card">
                     <div class="card-body">
-                        <form action="index.html" onsubmit="return calculohipoteca ()">
-                            <div id="formularioT"> <h1>Calcula tu hipoteca</h1> </div>
-                            <div id="inicio"> <p>Fecha de inicio <input type="month" id="fechaInicio" min="2018-02" value="2018-02"> </p></div>
-                            <div id="capital"> <p> Capital solicitado (Euros): <span id="euro">500000</span> <br> <input type="range" id="Euros" min="50000" max="1000000"> </p></div>
-                            <div id="Mes"> <p> Meses: <span id="mes">240</span> <br><input type="range" id="Meses" min="120" max="480"> </p></div>
-                            <div id="interes"> <p>Intereses (%):  <input type="number" id="intereses" value=1.05 min="0" step=0.01></p></div>
-                            <!--<div id="buscar"><p> <button> ¡Calcular cuotas! </button></p> </div>-->
-                            <div class="container">
-                            <div class="card-deck">
-                            <div><input type="submit" class="btn btn-default btn-lg active" value="Calcular"></div>
-                            <div id="botón"> <!-- botón para poder riniciar el programa y volver a caluclar  -->
-                                <p> 
-                                    <a href=index.html class="btn btn-default btn-lg active" role="button">Volver a empezar</a>
-                                </p>
-                            </div>
-                            </div>
-                            </div>
+                        <form action="index.html" oninput="return calculHipoteca()">
+                                <div id="formularioT"> <h1>Calcula tu hipoteca</h1> </div>
+                                <div id="inicio"> <p>Fecha de inicio <input type="date" required="required" value="2018-03-01" id="datainici"></p> </div>
+                                <div id="capital1"> <p> Capital solicitado (Euros): <span id="euro">500000</span> <br> <input type="range" required="required" min="1" max="1000000" id="capital"></p> </div>
+                                <div id="Mes"> <p> Años: <span id="mes">20</span> <br> <div ><input type="range" required="required" min="0" max="40" id="termini"></div> </p></div>
+                                <div id="interes1"> <p>Intereses (%):  <input type="number" required="required" value=1.05 min="0" step=0.01 id="interes"></p></div>
+                                <div class="container">
+                                    <div id="botón"> <!-- botón para poder riniciar el programa y volver a caluclar  -->
+                                        <p style="text-align:center;"> 
+                                            <a href=index.html class="btn btn-default btn-lg active" role="button" >Restablecer</a>
+                                        </p>
+                                    </div>
+                                </div>
+            
                         </form>
                     </div>
                 </div>
-                <div class="card">
-                <div id="resultats" style="text-align:center"></div>
+                <div  class="card">
+                    <div class="card-body">
+                    <div>
+                        <h1>Tu hipoteca</h1>
+                    </div>
+                   
+                    <img class="card-img-bottom" src="img/1.jpg" alt="Card image cap">
+                    <div id="resultat" style="text-align:center">
+                        
+                    </div>
+                    
                 </div>
             </div>
         </div>
+        </div>
+
+
+
+
+
 
 </body>
+</html>
