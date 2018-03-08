@@ -1,3 +1,24 @@
+addEventListener('load',inicio,false);
+function inicio()
+{
+    document.getElementById('termini').addEventListener('change',cambiomeses,false);
+}
+function cambiomeses()
+{    
+    document.getElementById('mes').innerHTML=document.getElementById('termini').value;
+}
+
+
+addEventListener('load',inicio1,false);
+function inicio1()
+{
+    document.getElementById('capital').addEventListener('change',cambiocapital,false);
+}
+function cambiocapital()
+{    
+    document.getElementById('euro').innerHTML=document.getElementById('capital').value;
+}
+
 function errors () {
     var datainici=new Date(document.getElementById("datainici").value);
     var datainicierrors=document.getElementById("datainici").value;
@@ -31,6 +52,8 @@ function calculHipoteca () {
     var interes=document.getElementById("interes").value;
     var termini=parseInt(document.getElementById("termini").value);
     var datafinal=datafi();
+    var capital1=inicio1();
+    var termini1=inicio();
     
     if (errors()) {
 
