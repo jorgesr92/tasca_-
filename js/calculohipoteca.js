@@ -28,7 +28,7 @@ function errors () {
         return false;
     }
     if (datainicierrors.substring(8,11)!="01"){
-        alert("el dia de la fecha tiene que se el primero de cada mes.");
+        alert("el día de la fecha tiene que se el primero de cada mes.");
         return false;
     }
     return true;
@@ -55,15 +55,9 @@ function calculHipoteca () {
     var capital1=inicio1();
     var termini1=inicio();
     
-    if (errors()) {
-
-       
-
+    if (errors()) {       
         quota=((capital*(interes/12))/(100*(1-Math.pow(1+(interes/(12*100)), (termini*12)*-1))));
-        
-       
-        
-        document.getElementById("resultat").innerHTML = "La data de l'última quota de la teva hipoteca serà el dia "+datafinal.getDate()+"/"+datafinal.getMonth()+"/"+datafinal.getFullYear()+ " i la quota de la teva hipoteca serà de "+quota.toFixed(2)+ " € con un interes del "+interes;    
+        document.getElementById("resultat").innerHTML = "La cuota de tu hipoteca será "+quota.toFixed(2)+ " y la fecha de la última cuota será el día "+datafinal.getDate()+"/"+datafinal.getMonth()+"/"+datafinal.getFullYear()+". ";    
     } 
     return false;
     
